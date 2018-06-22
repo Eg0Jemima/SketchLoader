@@ -2,16 +2,23 @@ AFRAME.registerComponent('sload', {
     schema: {
         url: {type: 'string', default: ''}
     },
+
     init: function () {
-        // Do something when component first attached.
-    },
-    update: function () {
-        // Do something when component's data is updated.
-    },
-    remove: function () {
-        // Do something the component or its entity is detached.
-    },
-    tick: function (time, timeDelta) {
-        // Do something on every scene tick or frame.
+        // Download Sketchfab object
+        var url = this.data.url;
+        console.log("My sketchfab url is = " + url)
+        var options = {
+            method: 'GET',
+            headers: {
+                Authorization: 'Token 51ce2d6489af40b0b3ba236ea1dabe7e',
+            },
+            mode: 'cors'
+        };
+
+        fetch(url, options).then(function(response){
+            return response.json();
+        }).then(function(data){
+            console.log(data);
+        });
     }
 });
