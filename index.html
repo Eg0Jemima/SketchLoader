@@ -2,11 +2,12 @@
   <title>Sketch Loader Demo</title>
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdn.rawgit.com/takahirox/THREE.ZipLoader/v0.0.1/build/ziploader.min.js"></script>
   <script src="js/sketchloader.js"></script>
 </head>
 
 <body>
-  <a-scene environment="preset:default;">
-      <a-entity sload="url: https://api.sketchfab.com/v3/models/49d97ca2fbf34f85b6c88ae8ebc7514f/download; token: [Replace this string including the brackets with your API token from Sketchfab];"></a-entity>
+  <a-scene environment="preset: default">
+      <a-entity sload="url: https://api.sketchfab.com/v3/models/49d97ca2fbf34f85b6c88ae8ebc7514f/download; token: 51ce2d6489af40b0b3ba236ea1dabe7e;"></a-entity>
   </a-scene>
 </body>
