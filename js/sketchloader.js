@@ -5,10 +5,12 @@ AFRAME.registerComponent('sload', {
     },
 
     init: function () {
+        let self = this;
         // Download Sketchfab object
         console.log("My sketchfab url is = " + this.data.url);
         console.log("My sketchfab token is " + this.data.token);
-        let scene = this.el.sceneEl;
+
+        // Configure Header
         var options = {
             method: 'GET',
             headers: {
@@ -17,6 +19,7 @@ AFRAME.registerComponent('sload', {
             mode: 'cors'
         };
 
+        // Fetch URL
         fetch(this.data.url, options).then(function(response){
             return response.json();
         }).then(function(data){
@@ -37,7 +40,9 @@ AFRAME.registerComponent('sload', {
               console.log("What is my file? = ", file)
           		new THREE.GLTFLoader(manager).load(file, function(gltf) {
                 console.log("My new gltf object is = ", gltf);
-          			scene.add(gltf);
+          			self.el.object3D.add(gltf.scene.children[0]);
+                self.el.setAttribute("scale", ".5 .5 .5");
+                self.el.setAttribute("position", "0 0 -5");
           		});
           	});
           }
